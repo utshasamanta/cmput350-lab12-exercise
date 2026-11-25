@@ -1,5 +1,11 @@
 ﻿Q3. What happens to the bounding boxes with update + fullRefit?
+The bounding boxes grow and overlap more as the circles move because refitting updates the boxes
+but keeps the original tree structure and circle groupings.
 
 Q4. What happens with reset (rebuild every frame) instead?
+The bounding boxes stay tighter around nearby circles because reset rebuilds the tree using the
+circles' new positions every frame.
 
 Q5. Why are some circles drawn with their sides cut off?
+The circles move before the pixels are drawn, but reset rebuilds the bounding boxes after the
+pixels are drawn. The old boxes can reject points on the moved circles' edges.
